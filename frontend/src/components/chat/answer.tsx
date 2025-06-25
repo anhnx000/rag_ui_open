@@ -121,26 +121,26 @@ export const Answer: FC<{
                 {...props}
                 href="#"
                 role="button"
-                className="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-medium text-blue-600 bg-blue-50 rounded hover:bg-blue-100 transition-colors relative"
+                className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors relative border border-blue-200"
               >
-                <span className="absolute -top-3 -right-1">[{props.href}]</span>
+                <span className="absolute -top-2 -right-1 text-blue-600">[{props.href}]</span>
               </a>
             </PopoverTrigger>
             <PopoverContent
               side="top"
               align="start"
-              className="max-w-2xl w-[calc(100vw-100px)] p-4 rounded-lg shadow-lg"
+              className="max-w-2xl w-[calc(100vw-100px)] p-4 rounded-xl shadow-lg border-2 border-blue-100 bg-white"
             >
               <div className="text-sm space-y-3">
                 {citationInfo && (
-                  <div className="flex items-center gap-2 text-xs font-medium text-gray-700 bg-gray-50 p-2 rounded">
+                  <div className="flex items-center gap-2 text-xs font-medium text-blue-700 bg-blue-50 p-3 rounded-lg border border-blue-100">
                     <div className="w-5 h-5 flex items-center justify-center">
                       <FileIcon
                         extension={
                           citationInfo.document.file_name.split(".").pop() || ""
                         }
-                        color="#E2E8F0"
-                        labelColor="#94A3B8"
+                        color="#3B82F6"
+                        labelColor="#1E40AF"
                       />
                     </div>
                     <span className="truncate">
@@ -153,12 +153,12 @@ export const Answer: FC<{
                 <p className="text-gray-700 leading-relaxed">{citation.text}</p>
                 <Divider />
                 {Object.keys(citation.metadata).length > 0 && (
-                  <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
-                    <div className="font-medium mb-2">Debug Info:</div>
+                  <div className="text-xs text-gray-500 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                    <div className="font-medium mb-2 text-blue-700">Thông tin tham chiếu:</div>
                     <div className="space-y-1">
                       {Object.entries(citation.metadata).map(([key, value]) => (
                         <div key={key} className="flex">
-                          <span className="font-medium min-w-[100px]">
+                          <span className="font-medium min-w-[100px] text-blue-600">
                             {key}:
                           </span>
                           <span className="text-gray-600">{String(value)}</span>

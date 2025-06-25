@@ -244,21 +244,45 @@ export default function ChatPage({ params }: { params: { id: string } }) {
   return (
     <DashboardLayout>
       <div className="flex flex-col h-[calc(100vh-5rem)] relative">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b-2 border-blue-100 bg-white vietinbank-shadow rounded-t-xl mb-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 vietinbank-gradient rounded-lg flex items-center justify-center p-1">
+              <div className="w-full h-full bg-white rounded-md flex items-center justify-center p-0.5">
+                <img
+                  src="/logo_vietinbank.png"
+                  alt="VietinBank Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+            <div>
+              <h1 className="text-lg font-bold text-blue-700">VietinBank AI Assistant</h1>
+              <p className="text-sm text-gray-600">Trợ lý thông minh ngành ngân hàng</p>
+            </div>
+          </div>
+          <div className="text-xs text-gray-500 bg-blue-50 px-3 py-1 rounded-full">
+            🔒 Bảo mật cao
+          </div>
+        </div>
+
         <div className="flex-1 overflow-y-auto p-4 space-y-4 pb-[80px]">
           {processedMessages.map((message) =>
             message.role === "assistant" ? (
               <div
                 key={message.id}
-                className="flex justify-start items-start space-x-2"
+                className="flex justify-start items-start space-x-3"
               >
-                <div className="w-8 h-8 flex items-center justify-center">
-                  <img
-                    src="/logo.png"
-                    className="h-8 w-8 rounded-full"
-                    alt="logo"
-                  />
+                <div className="w-10 h-10 flex items-center justify-center vietinbank-gradient rounded-lg vietinbank-shadow p-1">
+                  <div className="w-full h-full bg-white rounded-md flex items-center justify-center p-0.5">
+                    <img
+                      src="/logo_vietinbank.png"
+                      alt="VietinBank Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                 </div>
-                <div className="max-w-[80%] rounded-lg px-4 py-2 text-accent-foreground">
+                <div className="max-w-[80%] chat-message-assistant rounded-xl px-4 py-3 vietinbank-shadow">
                   <Answer
                     key={message.id}
                     markdown={message.content}
@@ -269,13 +293,13 @@ export default function ChatPage({ params }: { params: { id: string } }) {
             ) : (
               <div
                 key={message.id}
-                className="flex justify-end items-start space-x-2"
+                className="flex justify-end items-start space-x-3"
               >
-                <div className="max-w-[80%] rounded-lg px-4 py-2 bg-primary text-primary-foreground">
+                <div className="max-w-[80%] chat-message-user rounded-xl px-4 py-3 vietinbank-red-shadow">
                   {message.content}
                 </div>
-                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                  <User className="h-5 w-5 text-primary-foreground" />
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white vietinbank-red-shadow">
+                  <User className="h-5 w-5" />
                 </div>
               </div>
             )
@@ -284,11 +308,25 @@ export default function ChatPage({ params }: { params: { id: string } }) {
             {isLoading &&
               processedMessages[processedMessages.length - 1]?.role !=
                 "assistant" && (
-                <div className="max-w-[80%] rounded-lg px-4 py-2 text-accent-foreground">
-                  <div className="flex items-center space-x-1">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-bounce" />
-                    <div className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:0.2s]" />
-                    <div className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:0.4s]" />
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 flex items-center justify-center vietinbank-gradient rounded-lg p-1">
+                    <div className="w-full h-full bg-white rounded-md flex items-center justify-center p-0.5">
+                      <img
+                        src="/logo_vietinbank.png"
+                        alt="VietinBank Logo"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="max-w-[80%] chat-message-assistant rounded-xl px-4 py-3">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-1">
+                        <div className="w-2 h-2 rounded-full bg-blue-600 animate-bounce" />
+                        <div className="w-2 h-2 rounded-full bg-blue-600 animate-bounce [animation-delay:0.2s]" />
+                        <div className="w-2 h-2 rounded-full bg-blue-600 animate-bounce [animation-delay:0.4s]" />
+                      </div>
+                      <span className="text-sm text-blue-600">VietinBank đang suy nghĩ...</span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -297,20 +335,20 @@ export default function ChatPage({ params }: { params: { id: string } }) {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="border-t p-4 flex items-center space-x-4 bg-background absolute bottom-0 left-0 right-0"
+          className="border-t-2 border-blue-100 p-4 flex items-center space-x-4 bg-white absolute bottom-0 left-0 right-0 vietinbank-shadow"
         >
           <input
             value={input}
             onChange={handleInputChange}
-            placeholder="Type your message..."
-            className="flex-1 min-w-0 h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            placeholder="Hỏi VietinBank AI về các dịch vụ ngân hàng..."
+            className="flex-1 min-w-0 h-12 rounded-xl border-2 border-blue-200 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent banking-card"
           />
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            className="inline-flex items-center justify-center rounded-xl text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 vietinbank-gradient text-white hover:opacity-90 h-12 px-6 py-2 vietinbank-shadow"
           >
-            <Send className="h-4 w-4" />
+            <Send className="h-5 w-5" />
           </button>
         </form>
       </div>

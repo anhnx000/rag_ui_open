@@ -1,10 +1,10 @@
-# 同步算法的实现和验证
-# 算法说明：
-# 1. 使用哈希表(defaultdict)建立content_hash到chunks的映射，时间复杂度O(n)
-# 2. 使用集合操作找到相同位置的chunks，时间复杂度O(n)
-# 3. 使用双指针法进行剩余chunks的匹配，时间复杂度O(n)
-# 总体时间复杂度: O(n)，其中n为chunks的总数
-# 空间复杂度: O(n)，主要用于存储哈希表
+# Thực hiện và xác minh thuật toán đồng bộ
+# Giải thích thuật toán:
+# 1. Sử dụng bảng hash (defaultdict) để xây dựng ánh xạ từ content_hash đến chunks, độ phức tạp thời gian O(n)
+# 2. Sử dụng phép toán tập hợp để tìm chunks ở cùng vị trí, độ phức tạp thời gian O(n)
+# 3. Sử dụng phương pháp hai con trỏ để khớp các chunks còn lại, độ phức tạp thời gian O(n)
+# Độ phức tạp thời gian tổng thể: O(n), trong đó n là tổng số chunks
+# Độ phức tạp không gian: O(n), chủ yếu dùng để lưu trữ bảng hash
 
 from collections import defaultdict
 from typing import TypedDict, List, Dict, Set
@@ -15,55 +15,56 @@ class Chunk:
     index: int
     content_hash: str
     chunk_content: str
-    uuid: str = None
+    uuid: str = ""
 
 class SyncResult(TypedDict):
     to_create: List[Dict]
     to_update: List[Dict]
     to_delete: List[str]
 
-# 模拟后端的旧 chunks 数据
+# Mô phỏng dữ liệu chunks cũ của backend
 old_chunks = [
-    {'uuid': 'uuid_1', 'index': 0, 'content_hash': 'hash_A', 'chunk_content': '这是第一段。'},
-    {'uuid': 'uuid_2', 'index': 1, 'content_hash': 'hash_B', 'chunk_content': '这是第二段。'},
-    {'uuid': 'uuid_3', 'index': 2, 'content_hash': 'hash_C', 'chunk_content': '这是第三段。'},
-    {'uuid': 'uuid_4', 'index': 3, 'content_hash': 'hash_D', 'chunk_content': '这是第四段。'},
-    {'uuid': 'uuid_5', 'index': 4, 'content_hash': 'hash_E', 'chunk_content': '这是第五段。'},
+    {'uuid': 'uuid_1', 'index': 0, 'content_hash': 'hash_A', 'chunk_content': 'Đây là đoạn thứ nhất.'},
+    {'uuid': 'uuid_2', 'index': 1, 'content_hash': 'hash_B', 'chunk_content': 'Đây là đoạn thứ hai.'},
+    {'uuid': 'uuid_3', 'index': 2, 'content_hash': 'hash_C', 'chunk_content': 'Đây là đoạn thứ ba.'},
+    {'uuid': 'uuid_4', 'index': 3, 'content_hash': 'hash_D', 'chunk_content': 'Đây là đoạn thứ tư.'},
+    {'uuid': 'uuid_5', 'index': 4, 'content_hash': 'hash_E', 'chunk_content': 'Đây là đoạn thứ năm.'},
 ]
 
-# 模拟 GitHub Actions 生成的新 chunks 数据
+# Mô phỏng dữ liệu chunks mới được tạo bởi GitHub Actions
 new_chunks = [
-    {'index': 0, 'content_hash': 'hash_A', 'chunk_content': '这是第一段。'},
-    {'index': 1, 'content_hash': 'hash_C', 'chunk_content': '这是第三段。'},
-    {'index': 2, 'content_hash': 'hash_D', 'chunk_content': '这是第四段。'},
-    {'index': 3, 'content_hash': 'hash_D', 'chunk_content': '这是第四段。'},
-    {'index': 4, 'content_hash': 'hash_D', 'chunk_content': '这是第四段。'},
-    {'index': 5, 'content_hash': 'hash_D', 'chunk_content': '这是第四段。'},
-    {'index': 6, 'content_hash': 'hash_D', 'chunk_content': '这是第四段。'},
+    {'index': 0, 'content_hash': 'hash_A', 'chunk_content': 'Đây là đoạn thứ nhất.'},
+    {'index': 1, 'content_hash': 'hash_C', 'chunk_content': 'Đây là đoạn thứ ba.'},
+    {'index': 2, 'content_hash': 'hash_D', 'chunk_content': 'Đây là đoạn thứ tư.'},
+    {'index': 3, 'content_hash': 'hash_D', 'chunk_content': 'Đây là đoạn thứ tư.'},
+    {'index': 4, 'content_hash': 'hash_D', 'chunk_content': 'Đây là đoạn thứ tư.'},
+    {'index': 5, 'content_hash': 'hash_D', 'chunk_content': 'Đây là đoạn thứ tư.'},
+    {'index': 6, 'content_hash': 'hash_D', 'chunk_content': 'Đây là đoạn thứ tư.'},
 ]
 
 def synchronize_chunks(old_chunks: List[Dict], new_chunks: List[Dict]) -> SyncResult:
     """
-    基于 content_hash + index 的双指针匹配算法，查找需要新增、更新和删除的 chunks。
-    主要改进：
-    1. 对同一 content_hash 的旧、新 chunks，分别按 index 排序，再逐个匹配，避免原先直接根据
-       “两两相同位置”导致重复 content_hash 时的混淆。
-    2. 保留了原先的距离阈值(distance <= threshold)判断，但逻辑更直观，减少漏匹或误判。
+    Thuật toán khớp hai con trỏ dựa trên content_hash + index, tìm các chunks cần thêm, cập nhật và xóa.
+    Cải tiến chính:
+    1. Đối với các chunks cũ và mới có cùng content_hash, sắp xếp riêng theo index, sau đó khớp từng cái một, 
+       tránh việc dựa trực tiếp vào "vị trí giống nhau" dẫn đến nhầm lẫn khi có content_hash trùng lặp.
+    2. Giữ lại việc đánh giá ngưỡng khoảng cách ban đầu (distance <= threshold), nhưng logic trực quan hơn, 
+       giảm thiểu việc bỏ sót hoặc đánh giá sai.
     """
 
-    # ========== 1. 输入验证 ==========
+    # ========== 1. Xác thực đầu vào ==========
     if not isinstance(old_chunks, list) or not isinstance(new_chunks, list):
-        raise TypeError("输入参数必须是列表类型")
+        raise TypeError("Tham số đầu vào phải là kiểu danh sách")
 
     required_fields = {'index', 'content_hash', 'chunk_content'}
     for chunk in old_chunks:
         if not required_fields.union({'uuid'}).issubset(chunk.keys()):
-            raise ValueError("旧chunks缺少必要字段")
+            raise ValueError("Chunks cũ thiếu trường bắt buộc")
     for chunk in new_chunks:
         if not required_fields.issubset(chunk.keys()):
-            raise ValueError("新chunks缺少必要字段")
+            raise ValueError("Chunks mới thiếu trường bắt buộc")
 
-    # ========== 2. 构建 content_hash => chunks 的映射表，减少跨 content_hash 的错误匹配 ==========
+    # ========== 2. Xây dựng bảng ánh xạ content_hash => chunks, giảm việc khớp sai qua content_hash ==========
     old_chunks_by_hash = defaultdict(list)
     for oc in old_chunks:
         old_chunks_by_hash[oc['content_hash']].append(oc)
@@ -72,16 +73,16 @@ def synchronize_chunks(old_chunks: List[Dict], new_chunks: List[Dict]) -> SyncRe
     for nc in new_chunks:
         new_chunks_by_hash[nc['content_hash']].append(nc)
 
-    # ========== 3. 遍历所有的 content_hash，逐个匹配 ==========
+    # ========== 3. Duyệt qua tất cả content_hash, khớp từng cái một ==========
 
     to_create = []
     to_update = []
     to_delete = []
 
-    # “并”集获取所有出现过的 content_hash
+    # Tập hợp "hợp" để lấy tất cả content_hash đã xuất hiện
     all_hashes = set(old_chunks_by_hash.keys()) | set(new_chunks_by_hash.keys())
 
-    # 允许的更新距离阈值，可根据需要调大或调小
+    # Ngưỡng khoảng cách cập nhật cho phép, có thể điều chỉnh tăng hoặc giảm theo nhu cầu
     threshold = 10
 
     for content_hash in all_hashes:
@@ -96,7 +97,7 @@ def synchronize_chunks(old_chunks: List[Dict], new_chunks: List[Dict]) -> SyncRe
             new_entry = new_list[j]
             distance = abs(old_entry['index'] - new_entry['index'])
 
-            # 如果索引相近，则判定为同一块内容，执行更新操作
+            # Nếu chỉ số gần nhau, thì coi là cùng một khối nội dung, thực hiện thao tác cập nhật
             if distance <= threshold:
                 to_update.append({
                     'uuid': old_entry['uuid'],
@@ -107,12 +108,12 @@ def synchronize_chunks(old_chunks: List[Dict], new_chunks: List[Dict]) -> SyncRe
                 i += 1
                 j += 1
 
-            # 如果旧 chunk.index 更小，说明它在新列表里没有合适的配对，需要删除
+            # Nếu chunk.index cũ nhỏ hơn, có nghĩa là nó không có cặp phù hợp trong danh sách mới, cần xóa
             elif old_entry['index'] < new_entry['index']:
                 to_delete.append(old_entry['uuid'])
                 i += 1
 
-            # 否则，新 chunk.index 更小，说明这是新增加的块
+            # Ngược lại, chunk.index mới nhỏ hơn, có nghĩa là đây là khối mới được thêm vào
             else:
                 to_create.append({
                     'index': new_entry['index'],
@@ -121,12 +122,12 @@ def synchronize_chunks(old_chunks: List[Dict], new_chunks: List[Dict]) -> SyncRe
                 })
                 j += 1
 
-        # 把剩余的旧 chunks 视为需要删除
+        # Coi các chunks cũ còn lại là cần xóa
         while i < len_old:
             to_delete.append(old_list[i]['uuid'])
             i += 1
 
-        # 把剩余的新 chunks 视为需要新增
+        # Coi các chunks mới còn lại là cần thêm mới
         while j < len_new:
             to_create.append({
                 'index': new_list[j]['index'],
@@ -144,21 +145,21 @@ def synchronize_chunks(old_chunks: List[Dict], new_chunks: List[Dict]) -> SyncRe
 if __name__ == '__main__':
     result = synchronize_chunks(old_chunks, new_chunks)
 
-    print("需要创建的 chunks:")
+    print("Các chunks cần tạo:")
     if result['to_create']:
         for chunk in result['to_create']:
             print(chunk)
     else:
         print("null")
 
-    print("\n需要更新的 chunks:")
+    print("\nCác chunks cần cập nhật:")
     if result['to_update']:
         for chunk in result['to_update']:
             print(chunk)
     else:
         print("null")
 
-    print("\n需要删除的 chunks:")
+    print("\nCác chunks cần xóa:")
     if result['to_delete']:
         for uuid in result['to_delete']:
             print(uuid)

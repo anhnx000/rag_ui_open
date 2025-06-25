@@ -48,19 +48,19 @@ export default function ChatPage() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this chat?")) return;
+    if (!confirm("Bạn có chắc chắn muốn xóa cuộc trò chuyện này không?")) return;
     try {
       await api.delete(`/api/chat/${id}`);
       setChats((prev) => prev.filter((chat) => chat.id !== id));
       toast({
-        title: "Success",
-        description: "Chat deleted successfully",
+        title: "Thành công",
+        description: "Đã xóa cuộc trò chuyện thành công",
       });
     } catch (error) {
       console.error("Failed to delete chat:", error);
       if (error instanceof ApiError) {
         toast({
-          title: "Error",
+          title: "Lỗi",
           description: error.message,
           variant: "destructive",
         });
@@ -75,22 +75,22 @@ export default function ChatPage() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
-        <div className="bg-card rounded-lg shadow-sm p-6">
+        <div className="bg-card rounded-lg shadow-sm p-6 border border-red-100">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                Your Conversations
+              <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+                Lịch sử Trò chuyện
               </h2>
               <p className="text-muted-foreground mt-1">
-                Explore and manage your chat history
+                Khám phá và quản lý lịch sử trò chuyện với trợ lý AI
               </p>
             </div>
             <Link
               href="/dashboard/chat/new"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors duration-200 shadow-sm hover:shadow-md"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-red-600 to-red-700 px-6 py-2.5 text-sm font-semibold text-white hover:from-red-700 hover:to-red-800 transition-colors duration-200 shadow-sm hover:shadow-md shadow-red-600/20"
             >
               <Plus className="mr-2 h-4 w-4" />
-              Start New Chat
+              Bắt đầu Trò chuyện Mới
             </Link>
           </div>
 
@@ -99,10 +99,10 @@ export default function ChatPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search conversations..."
+                placeholder="Tìm kiếm cuộc trò chuyện..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-full border bg-background/50 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
+                className="w-full pl-10 pr-4 py-2 rounded-full border bg-background/50 focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all duration-200"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function ChatPage() {
                         {chat.title}
                       </h3>
                       <p className="text-sm text-muted-foreground mt-1">
-                        {chat.messages.length} messages •{" "}
+                        {chat.messages.length} tin nhắn •{" "}
                         {new Date(chat.created_at).toLocaleDateString()}
                       </p>
                     </div>
@@ -157,20 +157,20 @@ export default function ChatPage() {
         </div>
 
         {chats.length === 0 && (
-          <div className="text-center py-16 bg-card rounded-lg border">
+          <div className="text-center py-16 bg-card rounded-lg border border-red-100">
             <MessageSquare className="mx-auto h-12 w-12 text-muted-foreground/50" />
             <h3 className="mt-4 text-lg font-medium text-foreground">
-              No conversations yet
+              Chưa có cuộc trò chuyện nào
             </h3>
             <p className="mt-2 text-muted-foreground">
-              Start a new chat to begin exploring your knowledge base
+              Bắt đầu trò chuyện mới để khám phá kho tri thức VietinBank
             </p>
             <Link
               href="/dashboard/chat/new"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-red-600 to-red-700 px-6 py-2.5 text-sm font-semibold text-white hover:from-red-700 hover:to-red-800 transition-colors duration-200 shadow-lg shadow-red-600/20"
             >
               <Plus className="mr-2 h-4 w-4" />
-              Start Your First Chat
+              Bắt đầu Trò chuyện Đầu tiên
             </Link>
           </div>
         )}

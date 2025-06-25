@@ -8,8 +8,8 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RAG Web UI",
-  description: "A web UI for RAG applications",
+  title: "VietinBank Bot - Trợ lý AI thông minh",
+  description: "Chatbot AI chuyên nghiệp cho ngành ngân hàng, hỗ trợ tư vấn và giải đáp thông tin",
 };
 
 export default function RootLayout({
