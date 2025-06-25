@@ -258,7 +258,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
             </div>
             <div>
               <h1 className="text-lg font-bold text-blue-700">VietinBank AI Assistant</h1>
-              <p className="text-sm text-gray-600">Trợ lý thông minh ngành ngân hàng</p>
+              <p className="text-sm text-gray-600">Hỏi đáp các tài liệu thuộc ngân hàng Vietinbank</p>
             </div>
           </div>
           <div className="text-xs text-gray-500 bg-blue-50 px-3 py-1 rounded-full">

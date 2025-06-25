@@ -66,7 +66,7 @@ export default function DashboardPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-                Trợ lý Tri thức VietinBank (Knowledge Assistant)
+                Trợ Lý Tri Thức (Knowledge Assistant)
               </h1>
               <p className="text-slate-600 dark:text-slate-300 max-w-xl">
                 Hệ thống quản lý tri thức thông minh của VietinBank. Tải lên tài liệu, 
