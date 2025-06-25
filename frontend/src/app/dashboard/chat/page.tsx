@@ -79,7 +79,7 @@ export default function ChatPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-                Lịch sử Trò chuyện (Chat History)
+                Lịch Sử Trò Chuyện (Chat History)
               </h2>
               <p className="text-muted-foreground mt-1">
                 Khám phá và quản lý lịch sử trò chuyện với trợ lý AI
