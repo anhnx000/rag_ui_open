@@ -43,8 +43,8 @@ export default function DashboardLayout({
   };
 
   const navigation = [
-    { name: "Kho tri thức", href: "/dashboard/knowledge", icon: Book },
-    { name: "Trò chuyện", href: "/dashboard/chat", icon: MessageSquare },
+    { name: "Kho tri thức (Knowledge)", href: "/dashboard/knowledge", icon: Book },
+    { name: "Trò chuyện (Chat)", href: "/dashboard/chat", icon: MessageSquare },
     { name: "API Keys", href: "/dashboard/api-keys", icon: Shield },
   ];
 

@@ -7,16 +7,29 @@ import { usePathname } from "next/navigation";
 const Breadcrumb = () => {
   const pathname = usePathname();
 
+  // Mapping tiếng Anh sang tiếng Việt
+  const pathTranslations: { [key: string]: string } = {
+    dashboard: "Trang chủ",
+    knowledge: "Kho tri thức", 
+    chat: "Trò chuyện",
+    "api-keys": "API Keys",
+    new: "Tạo mới",
+    upload: "Tải lên",
+    "test-retrieval": "Kiểm tra tìm kiếm"
+  };
+
   const generateBreadcrumbs = () => {
     const paths = pathname.split("/").filter(Boolean);
     const breadcrumbs = paths.map((path, index) => {
       const href = "/" + paths.slice(0, index + 1).join("/");
-      const label =
-        path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, " ");
+      
+      // Sử dụng translation mapping hoặc fallback
+      let label = pathTranslations[path] || path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, " ");
+      
       const isLast = index === paths.length - 1;
 
       // Handle dynamic routes with [id]
-      const displayLabel = path.match(/^\[.*\]$/) ? "Details" : label;
+      const displayLabel = path.match(/^\[.*\]$/) ? "Chi tiết" : label;
 
       return {
         href,

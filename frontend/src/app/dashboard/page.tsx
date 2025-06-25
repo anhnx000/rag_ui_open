@@ -66,7 +66,7 @@ export default function DashboardPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-                Trợ lý Tri thức VietinBank
+                Trợ lý Tri thức VietinBank (Knowledge Assistant)
               </h1>
               <p className="text-slate-600 dark:text-slate-300 max-w-xl">
                 Hệ thống quản lý tri thức thông minh của VietinBank. Tải lên tài liệu, 
@@ -96,7 +96,7 @@ export default function DashboardPage() {
                   {stats.knowledgeBases}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-1">
-                  Kho Tri thức
+                  Kho tri thức
                 </p>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function DashboardPage() {
 
         {/* Quick Actions */}
         <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">
-          Thao tác Nhanh
+          Thao tác Nhanh (Quick Actions)
         </h2>
         <div className="grid gap-6 grid-cols-1 mb-12">
           <a
@@ -188,7 +188,7 @@ export default function DashboardPage() {
         <div className="rounded-2xl border border-red-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
           <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6 flex items-center">
             <Search className="mr-3 h-5 w-5 text-red-600 dark:text-red-400" />
-            Cách Thức Hoạt động
+            Cách Thức Hoạt động (How It Works)
           </h2>
           <div className="space-y-6">
             <div className="flex items-start gap-6 p-6 rounded-xl bg-red-50 dark:bg-slate-700/30">

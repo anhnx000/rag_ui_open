@@ -82,7 +82,7 @@ export default function KnowledgeBasePage() {
         <div className="flex justify-between items-center">
           <div>
             <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-              Kho Tri thức
+              Kho tri thức (Knowledge Bases)
             </h2>
             <p className="text-muted-foreground">
               Quản lý các kho tri thức và tài liệu ngân hàng của bạn

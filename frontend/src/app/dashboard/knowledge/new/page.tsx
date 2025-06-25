@@ -58,7 +58,7 @@ export default function NewKnowledgeBasePage() {
       <div className="max-w-2xl mx-auto space-y-8">
         <div>
           <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-            Tạo Kho Tri thức VietinBank
+            Tạo Kho Tri thức (Create Knowledge Base)
           </h2>
           <p className="text-muted-foreground">
             Tạo kho tri thức mới để lưu trữ các tài liệu ngân hàng của bạn
