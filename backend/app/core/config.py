@@ -49,6 +49,9 @@ class Settings(BaseSettings):
     OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     OPENAI_EMBEDDINGS_MODEL: str = os.getenv("OPENAI_EMBEDDINGS_MODEL", "text-embedding-3-small")
 
+
+
+
     # DashScope settings
     DASH_SCOPE_API_KEY: str = os.getenv("DASH_SCOPE_API_KEY", "")
     DASH_SCOPE_EMBEDDINGS_MODEL: str = os.getenv("DASH_SCOPE_EMBEDDINGS_MODEL", "")

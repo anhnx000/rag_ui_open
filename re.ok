@@ -1,0 +1,276 @@
+olving deltas: 100% (39596/39596), done.
+I0626 23:11:49.821679 227 pinned_memory_manager.cc:277] "Pinned memory pool is created at '0x7f2de4000000' with size 268435456"
+I0626 23:11:49.889224 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 0 with size 67108864"
+I0626 23:11:49.889233 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 1 with size 67108864"
+I0626 23:11:49.889235 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 2 with size 67108864"
+I0626 23:11:49.889237 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 3 with size 67108864"
+I0626 23:11:49.889240 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 4 with size 67108864"
+I0626 23:11:49.889242 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 5 with size 67108864"
+I0626 23:11:49.889244 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 6 with size 67108864"
+I0626 23:11:49.889246 227 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 7 with size 67108864"
+I0626 23:11:51.957738 227 model_lifecycle.cc:473] "loading: postprocessing:1"
+I0626 23:11:51.957779 227 model_lifecycle.cc:473] "loading: preprocessing:1"
+I0626 23:11:51.957868 227 model_lifecycle.cc:473] "loading: tensorrt_llm:1"
+I0626 23:11:51.957941 227 model_lifecycle.cc:473] "loading: tensorrt_llm_bls:1"
+I0626 23:11:53.913560 227 libtensorrtllm.cc:55] "TRITONBACKEND_Initialize: tensorrtllm"
+I0626 23:11:53.913598 227 libtensorrtllm.cc:62] "Triton TRITONBACKEND API version: 1.19"
+I0626 23:11:53.913603 227 libtensorrtllm.cc:66] "'tensorrtllm' TRITONBACKEND API version: 1.19"
+I0626 23:11:53.913608 227 libtensorrtllm.cc:86] "backend configuration:\n{\"cmdline\":{\"auto-complete-config\":\"true\",\"backend-directory\":\"/opt/tritonserver/backends\",\"min-compute-capability\":\"6.000000\",\"default-max-batch-size\":\"4\"}}"
+[TensorRT-LLM][WARNING] gpu_device_ids is not specified, will be automatically set
+[TensorRT-LLM][WARNING] participant_ids is not specified, will be automatically set
+I0626 23:11:53.951173 227 libtensorrtllm.cc:114] "TRITONBACKEND_ModelInitialize: tensorrt_llm (version 1)"
+[TensorRT-LLM][WARNING] max_beam_width is not specified, will use default value of 1
+[TensorRT-LLM][WARNING] iter_stats_max_iterations is not specified, will use default value of 1000
+[TensorRT-LLM][WARNING] request_stats_max_iterations is not specified, will use default value of 0
+[TensorRT-LLM][WARNING] normalize_log_probs is not specified, will be set to true
+[TensorRT-LLM][WARNING] max_tokens_in_paged_kv_cache is not specified, will use default value
+[TensorRT-LLM][WARNING] kv_cache_free_gpu_mem_fraction is not specified, will use default value of 0.9 or max_tokens_in_paged_kv_cache
+[TensorRT-LLM][WARNING] cross_kv_cache_fraction is not specified, error if it's encoder-decoder model, otherwise ok
+[TensorRT-LLM][WARNING] kv_cache_host_memory_bytes not set, defaulting to 0
+[TensorRT-LLM][WARNING] kv_cache_onboard_blocks not set, defaulting to true
+[TensorRT-LLM][WARNING] max_attention_window_size is not specified, will use default value (i.e. max_sequence_length)
+[TensorRT-LLM][WARNING] sink_token_length is not specified, will use default value
+[TensorRT-LLM][WARNING] enable_kv_cache_reuse is not specified, will be set to true
+[TensorRT-LLM][WARNING] enable_chunked_context is not specified, will be set to false.
+[TensorRT-LLM][WARNING] batch_scheduler_policy parameter was not found or is invalid (must be max_utilization or guaranteed_no_evict)
+[TensorRT-LLM][WARNING] lora_cache_max_adapter_size not set, defaulting to 64
+[TensorRT-LLM][WARNING] lora_cache_optimal_adapter_size not set, defaulting to 8
+[TensorRT-LLM][WARNING] lora_cache_gpu_memory_fraction not set, defaulting to 0.05
+[TensorRT-LLM][WARNING] lora_cache_host_memory_bytes not set, defaulting to 1GB
+[TensorRT-LLM][INFO] Initializing MPI with thread mode 3
+[TensorRT-LLM][INFO] Initialized MPI
+[TensorRT-LLM][INFO] num_nodes is not specified, will be set to 1
+[TensorRT-LLM][WARNING] multi_block_mode is not specified, will be set to true
+[TensorRT-LLM][WARNING] enable_context_fmha_fp32_acc is not specified, will be set to false
+[TensorRT-LLM][WARNING] cuda_graph_mode is not specified, will be set to false
+[TensorRT-LLM][WARNING] cuda_graph_cache_size is not specified, will be set to 0
+[TensorRT-LLM][INFO] speculative_decoding_fast_logits is not specified, will be set to false
+[TensorRT-LLM][WARNING] decoding_mode parameter is invalid or not specified(must be one of the {top_k, top_p, top_k_top_p, beam_search, medusa, redrafter, lookahead, eagle}).Using default: top_k_top_p if max_beam_width == 1, beam_search otherwise
+[TensorRT-LLM][WARNING] gpu_weights_percent parameter is not specified, will use default value of 1.0
+[TensorRT-LLM][INFO] recv_poll_period_ms is not set, will use busy loop
+[TensorRT-LLM][WARNING] encoder_model_path is not specified, will be left empty
+[TensorRT-LLM][INFO] Engine version 0.19.0 found in the config file, assuming engine(s) built by new builder API.
+I0626 23:11:55.714857 227 python_be.cc:2289] "TRITONBACKEND_ModelInstanceInitialize: tensorrt_llm_bls_0_0 (CPU device 0)"
+[TensorRT-LLM][INFO] Initializing MPI with thread mode 3
+[TensorRT-LLM][INFO] Initializing MPI with thread mode 3
+[TensorRT-LLM][INFO] Initializing MPI with thread mode 3
+[TensorRT-LLM][INFO] Initializing MPI with thread mode 3
+I0626 23:11:56.774494 227 python_be.cc:2289] "TRITONBACKEND_ModelInstanceInitialize: postprocessing_0_0 (CPU device 0)"
+I0626 23:11:57.459186 227 model_lifecycle.cc:849] "successfully loaded 'tensorrt_llm_bls'"
+I0626 23:11:58.812962 227 python_be.cc:2289] "TRITONBACKEND_ModelInstanceInitialize: preprocessing_0_0 (CPU device 0)"
+[TensorRT-LLM][INFO] Initialized MPI
+[TensorRT-LLM][INFO] Initialized MPI
+[TensorRT-LLM][INFO] Initialized MPI
+[TensorRT-LLM][INFO] Initialized MPI
+[TensorRT-LLM][INFO] Engine version 0.19.0 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Engine version 0.19.0 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Engine version 0.19.0 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Engine version 0.19.0 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Refreshed the MPI local session
+[TensorRT-LLM][INFO] MPI size: 4, MPI local size: 4, rank: 2
+[TensorRT-LLM][INFO] Refreshed the MPI local session
+[TensorRT-LLM][INFO] MPI size: 4, MPI local size: 4, rank: 3
+[TensorRT-LLM][INFO] Refreshed the MPI local session
+[TensorRT-LLM][INFO] Refreshed the MPI local session
+[TensorRT-LLM][INFO] MPI size: 4, MPI local size: 4, rank: 1
+[TensorRT-LLM][INFO] MPI size: 4, MPI local size: 4, rank: 0
+[TensorRT-LLM][INFO] Rank 1 is using GPU 1
+[TensorRT-LLM][INFO] MPI size: 4, MPI local size: 4, rank: 2
+[TensorRT-LLM][INFO] Rank 2 is using GPU 2
+[TensorRT-LLM][INFO] Rank 3 is using GPU 3
+[TensorRT-LLM][INFO] Rank 0 is using GPU 0
+[TensorRT-LLM][WARNING] Don't setup 'skip_special_tokens' correctly (set value is ${skip_special_tokens}). Set it as True by default.
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 8
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 4
+[TensorRT-LLM][INFO] TRTGptModel maxBeamWidth: 1
+[TensorRT-LLM][INFO] TRTGptModel maxSequenceLen: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxDraftLen: 0
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: (8192) * 32
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 1
+[TensorRT-LLM][INFO] TRTGptModel maxNumTokens: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxInputLen: 8191 = min(maxSequenceLen - 1, maxNumTokens) since context FMHA and usePackedInput are enabled
+[TensorRT-LLM][INFO] TRTGptModel If model type is encoder, maxInputLen would be reset in trtEncoderModel to maxInputLen: min(maxSequenceLen, maxNumTokens).
+[TensorRT-LLM][INFO] Capacity Scheduler Policy: GUARANTEED_NO_EVICT
+[TensorRT-LLM][INFO] Context Chunking Scheduler Policy: None
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 8
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 4
+[TensorRT-LLM][INFO] TRTGptModel maxBeamWidth: 1
+[TensorRT-LLM][INFO] TRTGptModel maxSequenceLen: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxDraftLen: 0
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: (8192) * 32
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 1
+[TensorRT-LLM][INFO] TRTGptModel maxNumTokens: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxInputLen: 8191 = min(maxSequenceLen - 1, maxNumTokens) since context FMHA and usePackedInput are enabled
+[TensorRT-LLM][INFO] TRTGptModel If model type is encoder, maxInputLen would be reset in trtEncoderModel to maxInputLen: min(maxSequenceLen, maxNumTokens).
+[TensorRT-LLM][INFO] Capacity Scheduler Policy: GUARANTEED_NO_EVICT
+[TensorRT-LLM][INFO] Context Chunking Scheduler Policy: None
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 8
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 4
+[TensorRT-LLM][INFO] TRTGptModel maxBeamWidth: 1
+[TensorRT-LLM][INFO] TRTGptModel maxSequenceLen: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxDraftLen: 0
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: (8192) * 32
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 1
+[TensorRT-LLM][INFO] TRTGptModel maxNumTokens: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxInputLen: 8191 = min(maxSequenceLen - 1, maxNumTokens) since context FMHA and usePackedInput are enabled
+[TensorRT-LLM][INFO] TRTGptModel If model type is encoder, maxInputLen would be reset in trtEncoderModel to maxInputLen: min(maxSequenceLen, maxNumTokens).
+[TensorRT-LLM][INFO] Capacity Scheduler Policy: GUARANTEED_NO_EVICT
+[TensorRT-LLM][INFO] Context Chunking Scheduler Policy: None
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 8
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 4
+[TensorRT-LLM][INFO] TRTGptModel maxBeamWidth: 1
+[TensorRT-LLM][INFO] TRTGptModel maxSequenceLen: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxDraftLen: 0
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: (8192) * 32
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 1
+[TensorRT-LLM][INFO] TRTGptModel maxNumTokens: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxInputLen: 8191 = min(maxSequenceLen - 1, maxNumTokens) since context FMHA and usePackedInput are enabled
+[TensorRT-LLM][INFO] TRTGptModel If model type is encoder, maxInputLen would be reset in trtEncoderModel to maxInputLen: min(maxSequenceLen, maxNumTokens).
+[TensorRT-LLM][INFO] Capacity Scheduler Policy: GUARANTEED_NO_EVICT
+[TensorRT-LLM][INFO] Context Chunking Scheduler Policy: None
+I0626 23:11:59.996275 227 model_lifecycle.cc:849] "successfully loaded 'postprocessing'"
+[TensorRT-LLM][WARNING] 'max_num_images' parameter is not set correctly (value is ${max_num_images}). Will be set to None
+[TensorRT-LLM][WARNING] Don't setup 'add_special_tokens' correctly (set value is ${add_special_tokens}). Set it as True by default.
+I0626 23:12:03.202601 227 model_lifecycle.cc:849] "successfully loaded 'preprocessing'"
+[TensorRT-LLM][INFO] Loaded engine size: 3844 MiB
+[TensorRT-LLM][INFO] Loaded engine size: 3844 MiB
+[TensorRT-LLM][INFO] Loaded engine size: 4345 MiB
+[TensorRT-LLM][INFO] Loaded engine size: 4345 MiB
+[TensorRT-LLM][INFO] Detecting local TP group for rank 1
+[TensorRT-LLM][INFO] Detecting local TP group for rank 0
+[TensorRT-LLM][INFO] TP group is intra-node for rank 0
+[TensorRT-LLM][INFO] TP group is intra-node for rank 1
+[TensorRT-LLM][INFO] Inspecting the engine to identify potential runtime issues...
+[TensorRT-LLM][INFO] The profiling verbosity of the engine does not allow this analysis to proceed. Re-build the engine with 'detailed' profiling verbosity to get more diagnostics.
+[TensorRT-LLM][INFO] Inspecting the engine to identify potential runtime issues...
+[TensorRT-LLM][INFO] The profiling verbosity of the engine does not allow this analysis to proceed. Re-build the engine with 'detailed' profiling verbosity to get more diagnostics.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 656.01 MiB for execution context memory.
+[TensorRT-LLM][INFO] gatherContextLogits: 0
+[TensorRT-LLM][INFO] gatherGenerationLogits: 0
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 656.01 MiB for execution context memory.
+[TensorRT-LLM][INFO] gatherContextLogits: 0
+[TensorRT-LLM][INFO] gatherGenerationLogits: 0
+[TensorRT-LLM][INFO] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 4334 (MiB)
+[TensorRT-LLM][INFO] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 4334 (MiB)
+[TensorRT-LLM][INFO] Detecting local TP group for rank 3
+[TensorRT-LLM][INFO] TP group is intra-node for rank 3
+[TensorRT-LLM][INFO] Detecting local TP group for rank 2
+[TensorRT-LLM][INFO] TP group is intra-node for rank 2
+[TensorRT-LLM][INFO] Inspecting the engine to identify potential runtime issues...
+[TensorRT-LLM][INFO] The profiling verbosity of the engine does not allow this analysis to proceed. Re-build the engine with 'detailed' profiling verbosity to get more diagnostics.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 656.01 MiB for execution context memory.
+[TensorRT-LLM][INFO] gatherContextLogits: 0
+[TensorRT-LLM][INFO] gatherGenerationLogits: 0
+[TensorRT-LLM][INFO] Inspecting the engine to identify potential runtime issues...
+[TensorRT-LLM][INFO] The profiling verbosity of the engine does not allow this analysis to proceed. Re-build the engine with 'detailed' profiling verbosity to get more diagnostics.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 656.01 MiB for execution context memory.
+[TensorRT-LLM][INFO] gatherContextLogits: 0
+[TensorRT-LLM][INFO] gatherGenerationLogits: 0
+[TensorRT-LLM][INFO] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 3833 (MiB)
+[TensorRT-LLM][INFO] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 3833 (MiB)
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 129.31 MB GPU memory for runtime buffers.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 0.00 B GPU memory for decoder.
+[TensorRT-LLM][INFO] Memory usage when calculating max tokens in paged kv cache: total: 79.10 GiB, available: 67.68 GiB
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 129.31 MB GPU memory for runtime buffers.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 0.00 B GPU memory for decoder.
+[TensorRT-LLM][INFO] Memory usage when calculating max tokens in paged kv cache: total: 79.10 GiB, available: 71.17 GiB
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 133.23 MB GPU memory for runtime buffers.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 17.16 MB GPU memory for decoder.
+[TensorRT-LLM][INFO] Memory usage when calculating max tokens in paged kv cache: total: 79.10 GiB, available: 71.65 GiB
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 133.23 MB GPU memory for runtime buffers.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 17.16 MB GPU memory for decoder.
+[TensorRT-LLM][INFO] Memory usage when calculating max tokens in paged kv cache: total: 79.10 GiB, available: 71.65 GiB
+[TensorRT-LLM][INFO] Number of blocks in KV cache primary pool: 62370
+[TensorRT-LLM][INFO] Number of blocks in KV cache secondary pool: 0, onboard blocks to primary memory before reuse: true
+[TensorRT-LLM][INFO] Number of blocks in KV cache primary pool: 62370
+[TensorRT-LLM][INFO] Number of blocks in KV cache secondary pool: 0, onboard blocks to primary memory before reuse: true
+[TensorRT-LLM][INFO] Number of blocks in KV cache primary pool: 62370
+[TensorRT-LLM][INFO] Number of blocks in KV cache secondary pool: 0, onboard blocks to primary memory before reuse: true
+[TensorRT-LLM][INFO] Number of blocks in KV cache primary pool: 62370
+[TensorRT-LLM][INFO] Number of blocks in KV cache secondary pool: 0, onboard blocks to primary memory before reuse: true
+[TensorRT-LLM][INFO] Number of tokens per block: 32.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 60.91 GiB for max tokens in paged KV cache (1995840).
+[TensorRT-LLM][INFO] Number of tokens per block: 32.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 60.91 GiB for max tokens in paged KV cache (1995840).
+[TensorRT-LLM][INFO] Number of tokens per block: 32.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 60.91 GiB for max tokens in paged KV cache (1995840).
+[TensorRT-LLM][INFO] Number of tokens per block: 32.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 60.91 GiB for max tokens in paged KV cache (1995840).
+[TensorRT-LLM][INFO] Executor instance created by worker
+[TensorRT-LLM][INFO] Executor instance created by worker
+[TensorRT-LLM][INFO] Executor instance created by worker
+[TensorRT-LLM][INFO] Executor instance created by worker
+[TensorRT-LLM][WARNING] exclude_input_in_output is not specified, will be set to false
+[TensorRT-LLM][WARNING] cancellation_check_period_ms is not specified, will be set to 100 (ms)
+[TensorRT-LLM][WARNING] stats_check_period_ms is not specified, will be set to 100 (ms)
+I0626 23:12:09.088720 227 libtensorrtllm.cc:184] "TRITONBACKEND_ModelInstanceInitialize: tensorrt_llm_0_0"
+I0626 23:12:09.089228 227 model_lifecycle.cc:849] "successfully loaded 'tensorrt_llm'"
+I0626 23:12:09.091861 227 model_lifecycle.cc:473] "loading: ensemble:1"
+I0626 23:12:09.093440 227 model_lifecycle.cc:849] "successfully loaded 'ensemble'"
+I0626 23:12:09.093535 227 server.cc:604] 
++------------------+------+
+| Repository Agent | Path |
++------------------+------+
++------------------+------+
+
+I0626 23:12:09.093564 227 server.cc:631] 
++-------------+-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+| Backend     | Path                                                            | Config                                                                                                                    |
++-------------+-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+| python      | /opt/tritonserver/backends/python/libtriton_python.so           | {"cmdline":{"auto-complete-config":"true","backend-directory":"/opt/tritonserver/backends","min-compute-capability":"6.00 |
+|             |                                                                 | 0000","default-max-batch-size":"4"}}                                                                                      |
+| tensorrtllm | /opt/tritonserver/backends/tensorrtllm/libtriton_tensorrtllm.so | {"cmdline":{"auto-complete-config":"true","backend-directory":"/opt/tritonserver/backends","min-compute-capability":"6.00 |
+|             |                                                                 | 0000","default-max-batch-size":"4"}}                                                                                      |
++-------------+-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+
+I0626 23:12:09.093623 227 server.cc:674] 
++------------------+---------+--------+
+| Model            | Version | Status |
++------------------+---------+--------+
+| ensemble         | 1       | READY  |
+| postprocessing   | 1       | READY  |
+| preprocessing    | 1       | READY  |
+| tensorrt_llm     | 1       | READY  |
+| tensorrt_llm_bls | 1       | READY  |
++------------------+---------+--------+
+
+I0626 23:12:09.451301 227 metrics.cc:890] "Collecting metrics for GPU 0: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451328 227 metrics.cc:890] "Collecting metrics for GPU 1: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451339 227 metrics.cc:890] "Collecting metrics for GPU 2: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451345 227 metrics.cc:890] "Collecting metrics for GPU 3: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451352 227 metrics.cc:890] "Collecting metrics for GPU 4: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451359 227 metrics.cc:890] "Collecting metrics for GPU 5: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451365 227 metrics.cc:890] "Collecting metrics for GPU 6: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.451372 227 metrics.cc:890] "Collecting metrics for GPU 7: NVIDIA H100 80GB HBM3"
+I0626 23:12:09.496652 227 metrics.cc:783] "Collecting CPU metrics"
+I0626 23:12:09.496981 227 tritonserver.cc:2598] 
++----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Option                           | Value                                                                                                                                                                    |
++----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| server_id                        | triton                                                                                                                                                                   |
+| server_version                   | 2.58.0                                                                                                                                                                   |
+| server_extensions                | classification sequence model_repository model_repository(unload_dependents) schedule_policy model_configuration system_shared_memory cuda_shared_memory binary_tensor_d |
+|                                  | ata parameters statistics trace logging                                                                                                                                  |
+| model_repository_path[0]         | /opt/tritonserver/inflight_batcher_llm                                                                                                                                   |
+| model_control_mode               | MODE_NONE                                                                                                                                                                |
+| strict_model_config              | 0                                                                                                                                                                        |
+| model_config_name                |                                                                                                                                                                          |
+| rate_limit                       | OFF                                                                                                                                                                      |
+| pinned_memory_pool_byte_size     | 268435456                                                                                                                                                                |
+| cuda_memory_pool_byte_size{0}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{1}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{2}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{3}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{4}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{5}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{6}    | 67108864                                                                                                                                                                 |
+| cuda_memory_pool_byte_size{7}    | 67108864                                                                                                                                                                 |
+| min_supported_compute_capability | 6.0                                                                                                                                                                      |
+| strict_readiness                 | 1                                                                                                                                                                        |
+| exit_timeout                     | 30                                                                                                                                                                       |
+| cache_enabled                    | 0                                                                                                                                                                        |
++----------------------------------+----------------------------------------------
