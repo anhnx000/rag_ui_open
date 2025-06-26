@@ -33,7 +33,7 @@ export default function ChatPage() {
 
   const fetchChats = async () => {
     try {
-      const data = await api.get("/api/chat");
+      const data = await api.get("http://109.237.64.130:8000/api/chat");
       setChats(data);
     } catch (error) {
       console.error("Failed to fetch chats:", error);
@@ -50,7 +50,7 @@ export default function ChatPage() {
   const handleDelete = async (id: number) => {
     if (!confirm("Bạn có chắc chắn muốn xóa cuộc trò chuyện này không?")) return;
     try {
-      await api.delete(`/api/chat/${id}`);
+      await api.delete(`http://109.237.64.130:8000/api/chat/${id}`);
       setChats((prev) => prev.filter((chat) => chat.id !== id));
       toast({
         title: "Thành công",

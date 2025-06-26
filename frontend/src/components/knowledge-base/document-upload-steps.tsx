@@ -146,7 +146,7 @@ export function DocumentUploadSteps({
       });
 
       const data = (await api.post(
-        `/api/knowledge-base/${knowledgeBaseId}/documents/upload`,
+        `http://109.237.64.130:8000/api/knowledge-base/${knowledgeBaseId}/documents/upload`,
         formData,
         {
           headers: {},
@@ -207,7 +207,7 @@ export function DocumentUploadSteps({
     setIsLoading(true);
     try {
       const data = await api.post(
-        `/api/knowledge-base/${knowledgeBaseId}/documents/preview`,
+        `http://109.237.64.130:8000/api/knowledge-base/${knowledgeBaseId}/documents/preview`,
         {
           document_ids: [selectedDocumentId],
           chunk_size: chunkSize,
@@ -252,7 +252,7 @@ export function DocumentUploadSteps({
     setIsLoading(true);
     try {
       const data = (await api.post(
-        `/api/knowledge-base/${knowledgeBaseId}/documents/process`,
+        `http://109.237.64.130:8000/api/knowledge-base/${knowledgeBaseId}/documents/process`,
         resultsToProcess
       )) as TaskResponse;
 
@@ -287,7 +287,7 @@ export function DocumentUploadSteps({
     const poll = async () => {
       try {
         const response = (await api.get(
-          `/api/knowledge-base/${knowledgeBaseId}/documents/tasks?task_ids=${taskIds.join(
+          `http://109.237.64.130:8000/api/knowledge-base/${knowledgeBaseId}/documents/tasks?task_ids=${taskIds.join(
             ","
           )}`
         )) as TaskStatusResponse;

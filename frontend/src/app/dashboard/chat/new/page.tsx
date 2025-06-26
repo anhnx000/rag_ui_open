@@ -30,7 +30,7 @@ export default function NewChatPage() {
 
   const fetchKnowledgeBases = async () => {
     try {
-      const data = await api.get("/api/knowledge-base");
+      const data = await api.get("http://109.237.64.130:8000/api/knowledge-base");
       setKnowledgeBases(data);
       setIsLoading(false);
     } catch (error) {
@@ -56,7 +56,7 @@ export default function NewChatPage() {
     setIsSubmitting(true);
 
     try {
-      const data = await api.post("/api/chat", {
+      const data = await api.post("http://109.237.64.130:8000/api/chat", {
         title,
         knowledge_base_ids: [selectedKB],
       });
