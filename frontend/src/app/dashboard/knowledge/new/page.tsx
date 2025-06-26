@@ -30,7 +30,7 @@ export default function NewKnowledgeBasePage() {
       const name = formData.get("name") as string;
       const description = formData.get("description") as string;
 
-      const data = await api.post("/api/knowledge-base", {
+      const data = await api.post("http://109.237.64.130:8000/api/knowledge-base", {
         name,
         description,
       });

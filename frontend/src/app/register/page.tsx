@@ -88,7 +88,7 @@ export default function RegisterPage() {
     }
 
     try {
-      await api.post("/api/auth/register", {
+      await api.post("http://109.237.64.130:8000/api/auth/register", {
         username,
         email,
         password,

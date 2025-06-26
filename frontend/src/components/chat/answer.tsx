@@ -66,8 +66,8 @@ export const Answer: FC<{
 
         try {
           const [kb, doc] = await Promise.all([
-            api.get(`/api/knowledge-base/${kb_id}`),
-            api.get(`/api/knowledge-base/${kb_id}/documents/${document_id}`),
+            api.get(`http://109.237.64.130:8000/api/knowledge-base/${kb_id}`),
+            api.get(`http://109.237.64.130:8000/api/knowledge-base/${kb_id}/documents/${document_id}`),
           ]);
 
           infoMap[key] = {

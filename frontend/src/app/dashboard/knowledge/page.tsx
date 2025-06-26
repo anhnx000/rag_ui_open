@@ -38,7 +38,7 @@ export default function KnowledgeBasePage() {
 
   const fetchKnowledgeBases = async () => {
     try {
-      const data = await api.get("/api/knowledge-base");
+      const data = await api.get("http://109.237.64.130:8000/api/knowledge-base");
       setKnowledgeBases(data);
     } catch (error) {
       console.error("Failed to fetch knowledge bases:", error);
@@ -58,7 +58,7 @@ export default function KnowledgeBasePage() {
     if (!confirm("Bạn có chắc chắn muốn xóa kho tri thức này không?"))
       return;
     try {
-      await api.delete(`/api/knowledge-base/${id}`);
+      await api.delete(`http://109.237.64.130:8000/api/knowledge-base/${id}`);
       setKnowledgeBases((prev) => prev.filter((kb) => kb.id !== id));
       toast({
         title: "Thành công",
