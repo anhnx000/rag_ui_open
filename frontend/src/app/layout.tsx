@@ -10,6 +10,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
       title: "Ngân hàng VietinBank Bot - Trợ lý AI thông minh",
     description: "Chatbot AI chuyên nghiệp cho ngân hàng, hỗ trợ tư vấn và giải đáp thông tin",
+  icons: {
+    icon: "/logo_vietinbank.png",
+    shortcut: "/logo_vietinbank.png",
+    apple: "/logo_vietinbank.png",
+  },
 };
 
 export default function RootLayout({
