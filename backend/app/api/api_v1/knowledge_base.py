@@ -68,15 +68,33 @@ def get_knowledge_bases(
 ) -> Any:
     """
     Retrieve knowledge bases.
+    Get user's own knowledge bases + all super users' knowledge bases.
     """
-    knowledge_bases = (
+    # Get user's own knowledge bases
+    user_knowledge_bases = (
         db.query(KnowledgeBase)
         .filter(KnowledgeBase.user_id == current_user.id)
-        .offset(skip)
-        .limit(limit)
         .all()
     )
-    return knowledge_bases
+    
+    # Get all super users' knowledge bases (shared with everyone)
+    super_user_knowledge_bases = (
+        db.query(KnowledgeBase)
+        .join(User, KnowledgeBase.user_id == User.id)
+        .filter(
+            User.is_superuser == True,
+            KnowledgeBase.user_id != current_user.id  # Exclude current user if they're super user
+        )
+        .all()
+    )
+    
+    # Combine both lists
+    all_knowledge_bases = user_knowledge_bases + super_user_knowledge_bases
+    
+    # Apply pagination to combined results
+    paginated_results = all_knowledge_bases[skip:skip + limit]
+    
+    return paginated_results
 
 @router.get("/{kb_id}", response_model=KnowledgeBaseResponse)
 def get_knowledge_base(
@@ -87,22 +105,26 @@ def get_knowledge_base(
 ) -> Any:
     """
     Get knowledge base by ID.
+    Allow access to own knowledge bases + super users' knowledge bases.
     """
     from sqlalchemy.orm import joinedload
+    from sqlalchemy import or_
     
     kb = (
         db.query(KnowledgeBase)
+        .join(User, KnowledgeBase.user_id == User.id)
         .options(
             joinedload(KnowledgeBase.documents)
             .joinedload(Document.processing_tasks)
         )
         .filter(
             KnowledgeBase.id == kb_id,
-            KnowledgeBase.user_id == current_user.id
+            # Allow access if it's user's own KB OR if it belongs to a super user
+            or_(KnowledgeBase.user_id == current_user.id, User.is_superuser == True)
         )
         .first()
     )
-
+    
     if not kb:
         raise HTTPException(status_code=404, detail="Knowledge base not found")
     

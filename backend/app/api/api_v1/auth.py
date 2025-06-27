@@ -62,10 +62,14 @@ def register(*, db: Session = Depends(get_db), user_in: UserCreate) -> Any:
             )
         
         # Create new user
+        # Set is_superuser to True if username is "admin"
+        is_superuser = user_in.username.lower() == "admin"
+        
         user = User(
             email=user_in.email,
             username=user_in.username,
             hashed_password=security.get_password_hash(user_in.password),
+            is_superuser=is_superuser,
         )
         db.add(user)
         db.commit()
