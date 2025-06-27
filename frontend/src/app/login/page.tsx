@@ -66,7 +66,7 @@ export default function LoginPage() {
               Đăng nhập hệ thống
             </h1>
             <p className="text-sm text-gray-600">
-              Hệ thống hỗ trợ tìm hiểu tài liệu doanh nghiệp
+              Hệ thống hỗ trợ tìm hiểu tài liệu doanh nghiệp.
             </p>
           </div>
 
