@@ -50,9 +50,10 @@ export default function LoginPage() {
 
   return (
     <main 
-      className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-cover bg-no-repeat flex items-center justify-center px-4 sm:px-4 lg:px-8"
       style={{
         backgroundImage: "url('/phong_canh_wallpaper.jpg')",
+        backgroundPosition: "center top",
       }}
     >
       {/* Overlay for better form readability */}
