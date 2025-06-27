@@ -258,7 +258,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
             </div>
             <div>
               <h1 className="text-lg font-bold text-blue-700">VietinBank AI Assistant</h1>
-              <p className="text-sm text-gray-600">Hỏi đáp các tài liệu thuộc ngân hàng Vietinbank</p>
+              <p className="text-sm text-gray-600">Hỏi đáp các tài liệu thuộc Ngân hàng VietinBank</p>
             </div>
           </div>
           <div className="text-xs text-gray-500 bg-blue-50 px-3 py-1 rounded-full">
@@ -325,7 +325,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
                         <div className="w-2 h-2 rounded-full bg-blue-600 animate-bounce [animation-delay:0.2s]" />
                         <div className="w-2 h-2 rounded-full bg-blue-600 animate-bounce [animation-delay:0.4s]" />
                       </div>
-                      <span className="text-sm text-blue-600">VietinBank đang suy nghĩ...</span>
+                      <span className="text-sm text-blue-600">Ngân hàng VietinBank đang suy nghĩ...</span>
                     </div>
                   </div>
                 </div>

@@ -69,7 +69,7 @@ export default function DashboardPage() {
                 Trợ Lý Tri Thức (Knowledge Assistant)
               </h1>
               <p className="text-slate-600 dark:text-slate-300 max-w-xl">
-                Hệ thống quản lý tri thức thông minh của VietinBank. Tải lên tài liệu, 
+                Hệ thống quản lý tri thức thông minh của Ngân hàng VietinBank. Tải lên tài liệu, 
                 xây dựng kho tri thức và nhận được câu trả lời tức thì qua trò chuyện 
                 tự nhiên với AI.
               </p>
@@ -96,7 +96,7 @@ export default function DashboardPage() {
                   {stats.knowledgeBases}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-1">
-                  Kho tri thức
+                  là số kho tri thức hiện có
                 </p>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function DashboardPage() {
                   {stats.chats}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-1">
-                  Phiên Trò chuyện
+                  là số phiên trò chuyện đã có của bạn 
                 </p>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function DashboardPage() {
               Tạo Kho Tri thức
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 text-center">
-              Xây dựng kho tri thức thông minh phục vụ hoạt động ngân hàng
+              Xây dựng kho tri thức thông minh phục vụ hoạt động Ngân hàng
             </p>
           </a>
 
@@ -200,7 +200,7 @@ export default function DashboardPage() {
                   Tạo Kho Tri thức
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300">
-                  Bắt đầu bằng cách tạo một kho tri thức mới để tổ chức thông tin ngân hàng của bạn. 
+                  Bắt đầu bằng cách tạo một kho tri thức mới để tổ chức thông tin Ngân hàng của bạn. 
                   Đặt tên và mô tả giúp xác định mục đích sử dụng.
                 </p>
                 <a

@@ -19,7 +19,7 @@ export default function RegisterPage() {
     if (!emailRegex.test(email)) {
       setValidationErrors((prev) => ({
         ...prev,
-        email: "Please enter a valid email address",
+        email: "Vui lòng nhập địa chỉ email hợp lệ",
       }));
       return false;
     }
@@ -31,28 +31,28 @@ export default function RegisterPage() {
     if (password.length < 8) {
       setValidationErrors((prev) => ({
         ...prev,
-        password: "Password must be at least 8 characters long",
+        password: "Mật khẩu phải có ít nhất 8 ký tự",
       }));
       return false;
     }
     if (!/[A-Z]/.test(password)) {
       setValidationErrors((prev) => ({
         ...prev,
-        password: "Password must contain at least one uppercase letter",
+        password: "Mật khẩu phải chứa ít nhất một chữ hoa",
       }));
       return false;
     }
     if (!/[a-z]/.test(password)) {
       setValidationErrors((prev) => ({
         ...prev,
-        password: "Password must contain at least one lowercase letter",
+        password: "Mật khẩu phải chứa ít nhất một chữ thường",
       }));
       return false;
     }
     if (!/[0-9]/.test(password)) {
       setValidationErrors((prev) => ({
         ...prev,
-        password: "Password must contain at least one number",
+        password: "Mật khẩu phải chứa ít nhất một chữ số",
       }));
       return false;
     }
@@ -78,7 +78,7 @@ export default function RegisterPage() {
     if (password !== confirmPassword) {
       setValidationErrors((prev) => ({
         ...prev,
-        confirmPassword: "Passwords do not match",
+        confirmPassword: "Mật khẩu xác nhận không khớp",
       }));
       return;
     }
@@ -99,65 +99,73 @@ export default function RegisterPage() {
       if (err instanceof ApiError) {
         setError(err.message);
       } else {
-        setError("Registration failed");
+        setError("Đăng ký thất bại");
       }
     }
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-md p-8 space-y-6">
+    <main 
+      className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 sm:px-6 lg:px-8"
+      style={{
+        backgroundImage: "url('/phong_canh_wallpaper.jpg')",
+      }}
+    >
+      {/* Overlay for better form readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      
+      <div className="relative z-10 w-full max-w-md">
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 space-y-6 border border-white/20">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900">
-              Welcome To RAG Web UI
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Đăng ký tài khoản
             </h1>
-            <p className="mt-2 text-sm text-gray-600">
-              Create your account to get started
+            <p className="text-sm text-gray-600">
+              Hệ thống hỗ trợ tìm hiểu tài liệu doanh nghiệp
             </p>
           </div>
 
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div>
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Username
+                  Tên đăng nhập
                 </label>
                 <input
                   id="username"
                   name="username"
                   type="text"
                   required
-                  className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter your username"
+                  className="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/90 backdrop-blur-sm transition-all duration-200"
+                  placeholder="Nhập tên đăng nhập"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Email
+                  Địa chỉ email
                 </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
                   required
-                  className={`mt-1 block w-full px-3 py-2 rounded-md border ${
+                  className={`block w-full px-4 py-3 rounded-lg border ${
                     validationErrors.email
-                      ? "border-red-300"
-                      : "border-gray-300"
-                  } shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
-                  placeholder="Enter your email"
+                      ? "border-red-300 bg-red-50/90"
+                      : "border-gray-300 bg-white/90"
+                  } shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 backdrop-blur-sm transition-all duration-200`}
+                  placeholder="Nhập địa chỉ email"
                   onChange={(e) => validateEmail(e.target.value)}
                 />
                 {validationErrors.email && (
-                  <p className="mt-1 text-sm text-red-600">
+                  <p className="mt-2 text-sm text-red-600">
                     {validationErrors.email}
                   </p>
                 )}
@@ -166,25 +174,25 @@ export default function RegisterPage() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Password
+                  Mật khẩu
                 </label>
                 <input
                   id="password"
                   name="password"
                   type="password"
                   required
-                  className={`mt-1 block w-full px-3 py-2 rounded-md border ${
+                  className={`block w-full px-4 py-3 rounded-lg border ${
                     validationErrors.password
-                      ? "border-red-300"
-                      : "border-gray-300"
-                  } shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
-                  placeholder="Create a password"
+                      ? "border-red-300 bg-red-50/90"
+                      : "border-gray-300 bg-white/90"
+                  } shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 backdrop-blur-sm transition-all duration-200`}
+                  placeholder="Tạo mật khẩu"
                   onChange={(e) => validatePassword(e.target.value)}
                 />
                 {validationErrors.password && (
-                  <p className="mt-1 text-sm text-red-600">
+                  <p className="mt-2 text-sm text-red-600">
                     {validationErrors.password}
                   </p>
                 )}
@@ -193,24 +201,24 @@ export default function RegisterPage() {
               <div>
                 <label
                   htmlFor="confirmPassword"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Confirm Password
+                  Xác nhận mật khẩu
                 </label>
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
                   type="password"
                   required
-                  className={`mt-1 block w-full px-3 py-2 rounded-md border ${
+                  className={`block w-full px-4 py-3 rounded-lg border ${
                     validationErrors.confirmPassword
-                      ? "border-red-300"
-                      : "border-gray-300"
-                  } shadow-sm focus:ring-2 focus:ring-gray-500 focus:border-gray-500`}
-                  placeholder="Confirm your password"
+                      ? "border-red-300 bg-red-50/90"
+                      : "border-gray-300 bg-white/90"
+                  } shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 backdrop-blur-sm transition-all duration-200`}
+                  placeholder="Nhập lại mật khẩu"
                 />
                 {validationErrors.confirmPassword && (
-                  <p className="mt-1 text-sm text-red-600">
+                  <p className="mt-2 text-sm text-red-600">
                     {validationErrors.confirmPassword}
                   </p>
                 )}
@@ -218,25 +226,34 @@ export default function RegisterPage() {
             </div>
 
             {error && (
-              <div className="p-3 rounded-md bg-red-50 text-red-700 text-sm">
+              <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">
                 {error}
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
             >
-              Create Account
+              Tạo tài khoản
             </button>
           </form>
 
           <div className="text-center">
             <Link
               href="/login"
-              className="text-sm font-medium text-gray-600 hover:text-gray-500"
+              className="text-sm font-medium text-blue-600 hover:text-blue-500 transition-colors duration-200"
             >
-              Already have an account? Sign in
+              Đã có tài khoản? Đăng nhập ngay
+            </Link>
+          </div>
+
+          <div className="text-center pt-4 border-t border-gray-200">
+            <Link
+              href="/"
+              className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-200"
+            >
+              ← Quay về trang chủ
             </Link>
           </div>
         </div>

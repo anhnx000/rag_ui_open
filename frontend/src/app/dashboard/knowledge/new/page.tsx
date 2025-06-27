@@ -61,7 +61,7 @@ export default function NewKnowledgeBasePage() {
             Tạo Kho Tri thức (Create Knowledge Base)
           </h2>
           <p className="text-muted-foreground">
-            Tạo kho tri thức mới để lưu trữ các tài liệu ngân hàng của bạn
+            Tạo kho tri thức mới để lưu trữ các tài liệu Ngân hàng của bạn
           </p>
         </div>
 

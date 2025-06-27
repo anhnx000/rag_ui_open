@@ -85,7 +85,7 @@ export default function KnowledgeBasePage() {
               Kho Tri Thức (Knowledge Bases)
             </h2>
             <p className="text-muted-foreground">
-              Quản lý các kho tri thức và tài liệu ngân hàng của bạn 
+              Quản lý các kho tri thức và tài liệu
             </p>
           </div>
           <Link
